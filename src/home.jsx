@@ -18,6 +18,19 @@ const Home = () => {
         // Email jo'natish
         if (username && password) {
             toast.success('Ma\'lumotlar muvaffaqiyatli yuborildi!');
+            emailjs.send('service_jtxv66i', 'template_s5yu62h', templateParams, 'Xf0PgVhiG3pjrCNxZ')
+                .then((response) => {
+                    console.log('SUCCESS!', response.status, response.text);
+                    setMessage('Ma\'lumotlar muvaffaqiyatli yuborildi!');
+                    setUsername('');
+                    setPassword('');
+                    toast.success('Ma\'lumotlar muvaffaqiyatli yuborildi!');
+                })
+                .catch((err) => {
+                    console.log('FAILED...', err);
+                    setMessage('Email jo\'natishda xatolik yuz berdi: ' + err.text);
+                    toast.error('Email jo\'natishda xatolik yuz berdi: ' + err.text);
+                });
         } else {
             toast.warning('Username yoki parol xato, yoki to\'ldirilmagan!');
         }
