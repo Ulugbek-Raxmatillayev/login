@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { toast, ToastContainer } from 'react-toastify';
+import emailjs from 'emailjs-com';
 
 const Home = () => {
     const [username, setUsername] = useState('');
